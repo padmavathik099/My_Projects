@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            background-image: url("{% static 'login.jpg' %}");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            width: 100%;
+        }
+        li {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            color: green;
+        }
+        .pending {
+            color: red;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your To-Do List</h2>
+    <ul>
+        {% for todo in todos %}
+        <li>
+            <div>
+                <strong>{{ todo.title }}</strong> - {{ todo.description }}
+                {% if todo.completed %}
+                <span class="completed">(Completed)</span>
+                {% else %}
+                <span class="pending">(Pending)</span>
+                {% endif %}
+            </div>
+            <div class="actions">
+                {% if todo.completed %}
+                <a href="{% url 'update_todo' todo.id %}?action=mark_pending">Pending</a>
+                {% else %}
+                <a href="{% url 'update_todo' todo.id %}?action=mark_completed">Completed</a>
+                {% endif %}
+                <a href="{% url 'delete_todo' todo.id %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+            </div>
+        </li>
+    {% endfor %}
+    
+    </ul>
+    <a href="{% url 'add_todo' %}">Add a new To-Do</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
+
+
+

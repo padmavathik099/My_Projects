@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskEase</title>
+    <style>
+        body {
+            background-image: url("{% static 't1.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        nav {
+            width: 100%;
+            background-color:  #4b0082;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            flex-wrap: wrap; 
+        }
+    
+        nav .logo {
+            margin-left:0px;
+            font-size: 2rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; 
+            margin-right:50px;
+        }
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+        nav .nav-links a:hover {
+            background-color: white;
+        }
+        h1 {
+            color:   #4b0082;
+            font-size: 4rem;
+            margin-top: 80px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 300px;
+            color:  #4b0082;
+            font-size: 3rem;
+            text-align: center;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+            max-width: 600px;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group a {
+            text-decoration: none;
+            background-color: #4b0082;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .button-group a:hover {
+            background-color: #6a0dad;
+        }
+
+    
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            h1, h2 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            nav .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            h1, h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TaskEase</div>
+        <div class="nav-links">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">SignUp</a>
+        </div>
+    </nav>
+
+
+    <h2>Welcome to Your To-Do List Manager</h2>
+    <p>Stay organized, track your tasks, and get things done efficiently with our simple to-do list manager.</p>
+    <p>Log in or sign up to manage your tasks now!</p>
+
+</body>
+</html>
